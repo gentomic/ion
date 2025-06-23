@@ -7,19 +7,18 @@ using LexerOutput = std::vector<std::unique_ptr<Token>>;
 using LexerFn = std::function<LexerOutput(const Compiler<std::string_view>)>;
 
 namespace Ion::Processes::Lexer {
-  // State define(std::string_view lexum);
-  State tStart(const UChar32& c,  Constructs::Runner& runner);
-  State transition(const State last, const UChar32& c, Constructs::Runner& runner);
-  std::unique_ptr<Token> accumulate(Constructs::Runner& runner);
+  State tStart(const UChar32& c,  Runner& runner);
+  State transition(const State last, const UChar32& c, Runner& runner);
+  std::unique_ptr<Token> accumulate(Runner& runner);
   static const LexerFn run;
 }
 
 namespace Ion::Processes::Lexer::Submachines {
   static icu::UnicodeString auxStore = "";
-  State string(Constructs::Runner& runner);
-  State sChar(Constructs::Runner& runner);
-  State commentLine(Constructs::Runner& runner);
-  State commentBlock(Constructs::Runner& runner);
+  State string(Runner& runner);
+  State sChar(Runner& runner);
+  State commentLine(Runner& runner);
+  State commentBlock(Runner& runner);
 }
 
 namespace Lexer = Ion::Processes::Lexer;

@@ -4,6 +4,6 @@
 namespace Ion::Processes { }
 
 #include "./lexer.hh"
-// #include "./parser.hh"
+#include "./parser.hh"
 
 #endif
